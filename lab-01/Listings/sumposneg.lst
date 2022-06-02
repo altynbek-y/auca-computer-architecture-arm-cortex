@@ -1,0 +1,161 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000         ; LAB #1 ASSIGNMENT 2
+    2 00000000         ; DONE BY YIMAN ALTYNBEK UULU, AMI-19 
+    3 00000000         ; COMPUTER ARCHITECTURE & ORGANIZATION
+    4 00000000         ; MELIS OSMONOV
+    5 00000000         
+    6 00000000                 AREA             SUM_POS_NEG, CODE, READONLY
+    7 00000000                 ENTRY
+    8 00000000         
+    9 00000000 E3A00000        MOV              r0, #0      ; i = 0
+   10 00000004 E28F103C        ADR              r1, NUMBERS ; address of array
+   11 00000008         
+   12 00000008 E28F2054        ADR              r2, POS_SUM ; address of variab
+                                                            le
+   13 0000000C E28F3054        ADR              r3, NEG_SUM ; address of variab
+                                                            le
+   14 00000010         
+   15 00000010 E5924000        LDR              r4, [r2]    ; load inital value
+                                                            
+   16 00000014 E5935000        LDR              r5, [r3]    ; load inital value
+                                                            
+   17 00000018         
+   18 00000018         LOOP
+   19 00000018 E7916100        LDR              r6, [r1, r0, lsl #2] ; load val
+                                                            ue from memory
+   20 0000001C         
+   21 0000001C E3560000        CMP              r6, #0      ; r < 0?
+   22 00000020         
+   23 00000020 0A000003        BEQ              FINISH      ; is it 0? exit on 
+                                                            sentinel (0) encoun
+                                                            ter
+   24 00000024         
+   25 00000024 C0844006        ADDGT            r4, r4, r6  ; sum positive numb
+                                                            ers
+   26 00000028         
+   27 00000028 B0855006        ADDLT            r5, r5, r6  ; sum negative numb
+                                                            ers
+   28 0000002C         
+   29 0000002C E2800001        ADD              r0,r0,#1    ; i = i + 1        
+                                                              
+   30 00000030         
+   31 00000030 EAFFFFF8        B                LOOP
+   32 00000034         FINISH
+   33 00000034         
+   34 00000034 E5824000        STR              r4, [r2]    ; save the result i
+                                                            n memory
+   35 00000038 E5835000        STR              r5, [r3]    ; save the result i
+                                                            n memory
+   36 0000003C         
+   37 0000003C E59F7020        LDR              r7, POS_SUM ; the saved result
+   38 00000040 E59F8020        LDR              r8, NEG_SUM ; the saved result
+   39 00000044         
+   40 00000044 EAFFFFFE 
+                       S       B                S           ; terminate program
+                                                            
+   41 00000048         
+   42 00000048                 AREA             SUM_POS_NEG, DATA, READWRITE
+   43 00000048                 ALIGN
+   44 00000048 00000014 
+              FFFFFFF8 
+
+
+
+ARM Macro Assembler    Page 2 
+
+
+              FFFFFFDD 
+              0000000A 
+              0000000F 
+              FFFFFFF9 
+              00000000 NUMBERS DCD              20, -8, -35, 10, 15, -7, 0 
+                                                            ; array
+   45 00000064 00000000 
+                       POS_SUM DCD              0           ; sum of positive v
+                                                            alues only
+   46 00000068 00000000 
+                       NEG_SUM DCD              0           ; sum of negative v
+                                                            alues only
+   47 0000006C         
+   48 0000006C                 END
+Command Line: --debug --xref --diag_suppress=9931 --bi --apcs=interwork --depen
+d=.\objects\sumposneg.d -o.\objects\sumposneg.o -IC:\Keil_v5\ARM\RV31\INC -IC:\
+Keil_v5\ARM\CMSIS\Include --predefine="__EVAL SETA 1" --predefine="__UVISION_VE
+RSION SETA 529" --list=.\listings\sumposneg.lst sumPosNeg.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+FINISH 00000034
+
+Symbol: FINISH
+   Definitions
+      At line 32 in file sumPosNeg.s
+   Uses
+      At line 23 in file sumPosNeg.s
+Comment: FINISH used once
+LOOP 00000018
+
+Symbol: LOOP
+   Definitions
+      At line 18 in file sumPosNeg.s
+   Uses
+      At line 31 in file sumPosNeg.s
+Comment: LOOP used once
+NEG_SUM 00000068
+
+Symbol: NEG_SUM
+   Definitions
+      At line 46 in file sumPosNeg.s
+   Uses
+      At line 13 in file sumPosNeg.s
+      At line 38 in file sumPosNeg.s
+
+NUMBERS 00000048
+
+Symbol: NUMBERS
+   Definitions
+      At line 44 in file sumPosNeg.s
+   Uses
+      At line 10 in file sumPosNeg.s
+Comment: NUMBERS used once
+POS_SUM 00000064
+
+Symbol: POS_SUM
+   Definitions
+      At line 45 in file sumPosNeg.s
+   Uses
+      At line 12 in file sumPosNeg.s
+      At line 37 in file sumPosNeg.s
+
+S 00000044
+
+Symbol: S
+   Definitions
+      At line 40 in file sumPosNeg.s
+   Uses
+      At line 40 in file sumPosNeg.s
+Comment: S used once
+SUM_POS_NEG 00000000
+
+Symbol: SUM_POS_NEG
+   Definitions
+      At line 6 in file sumPosNeg.s
+   Uses
+      None
+Comment: SUM_POS_NEG unused
+7 symbols
+
+
+
+ARM Macro Assembler    Page 2 Alphabetic symbol ordering
+Relocatable symbols
+
+339 symbols in table

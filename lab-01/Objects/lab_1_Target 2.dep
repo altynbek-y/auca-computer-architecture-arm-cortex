@@ -1,0 +1,4 @@
+Dependencies for Project 'lab_1', Target 'Target 2': (DO NOT MODIFY !)
+CompilerVersion: 5060750::V5.06 update 6 (build 750)::ARMCC
+F (.\convertF2CandC2F.s)(0x62025D82)(--cpu ARM7TDMI --bi --pd "__EVAL SETA 1" -g --apcs=interwork -IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include--pd "__UVISION_VERSION SETA 529"--list .\listings\convertf2candc2f.lst --xref -o .\objects\convertf2candc2f.o --depend .\objects\convertf2candc2f.d)
+F (.\sumPosNeg.s)(0x620260AB)(--cpu ARM7TDMI --bi --pd "__EVAL SETA 1" -g --apcs=interwork -IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include--pd "__UVISION_VERSION SETA 529"--list .\listings\sumposneg.lst --xref -o .\objects\sumposneg.o --depend .\objects\sumposneg.d)

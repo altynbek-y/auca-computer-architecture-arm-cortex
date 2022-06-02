@@ -1,0 +1,152 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000         ; LAB #4 ASSIGNMENT 2
+    2 00000000         ; DONE BY YIMAN ALTYNBEK UULU, AMI-19 
+    3 00000000         ; COMPUTER ARCHITECTURE & ORGANIZATION
+    4 00000000         ; INSTRUCTOR MELIS OSMONOV
+    5 00000000         
+    6 00000000                 AREA             Factorial, CODE, READONLY
+    7 00000000         
+    8 00000000                 ENTRY
+    9 00000000         
+   10 00000000 E59FD010        LDR              SP, =INITIAL_MSP
+   11 00000004         
+   12 00000004 E3A00001        MOV              R0, #1      ; result - N!
+   13 00000008         
+   14 00000008 E59F100C        LDR              R1, N       ; number - N
+   15 0000000C         
+   16 0000000C E52D0004        PUSH             {R0}        ; push 1 onto stack
+                                                            
+   17 00000010         
+   18 00000010 EBFFFFFE        BL               FACTORIAL   ; procedure call
+   19 00000014         
+   20 00000014 EAFFFFFE 
+                       Stop    B                Stop        ; infinite loop - t
+                                                            erminaton of progra
+                                                            m
+   21 00000018         
+   22 00000018         ;-----------------------------------memory--------------
+                       --------------------------------------------------
+   23 00000018         
+   24 00000018 00009000        AREA             Factorial, DATA, READWRITE
+   25 0000001C         
+   26 0000001C                 ALIGN
+   27 0000001C         
+   28 0000001C 00000007 
+                       N       DCD              7           ; number whose fact
+                                                            orial is to be foun
+                                                            d
+   29 00000020         
+   30 00000020 00009000 
+                       INITIAL_MSP
+                               EQU              0x00009000  ; Initial Main Stac
+                                                            k Pointer Value
+   31 00000020         
+   32 00000020         ;---------------------------factorial-definiton---------
+                       --------------------------------------------------
+   33 00000020         
+   34 00000020         FACTORIAL
+                               PROC                         ; procedure
+   35 00000020         
+   36 00000020         loop
+   37 00000020 E49D0004        POP              {R0}        ; pop a number from
+                                                             stack
+   38 00000024         
+   39 00000024 E0020190        MUL              R2, R0, R1  ; R2 = R0 * R1
+   40 00000028         
+   41 00000028 E1A00002        MOV              R0, R2      ; R0 = R2
+   42 0000002C         
+   43 0000002C E52D0004        PUSH             {R0}        ; push the product 
+                                                            onto stack
+   44 00000030         
+
+
+
+ARM Macro Assembler    Page 2 
+
+
+   45 00000030 E2511001        SUBS             R1, R1, #1  ; R1-- and set flag
+                                                            
+   46 00000034         
+   47 00000034 1AFFFFF9        BNE              loop        ; continue if != 0
+   48 00000038         
+   49 00000038 E49D0004        POP              {R0}        ; R0 = N!
+   50 0000003C         
+   51 0000003C E12FFF1E        BX               LR          ; return
+   52 00000040         
+   53 00000040                 ENDP                         ; end of the proced
+                                                            ure
+   54 00000040         
+   55 00000040                 END                          ; end of the progra
+                                                            m
+Command Line: --debug --xref --diag_suppress=9931 --bi --apcs=interwork --depen
+d=.\objects\factorial.d -o.\objects\factorial.o -IC:\Keil_v5\ARM\RV31\INC -IC:\
+Keil_v5\ARM\CMSIS\Include --predefine="__EVAL SETA 1" --predefine="__UVISION_VE
+RSION SETA 529" --list=.\listings\factorial.lst Factorial.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+FACTORIAL 00000020
+
+Symbol: FACTORIAL
+   Definitions
+      At line 34 in file Factorial.s
+   Uses
+      At line 18 in file Factorial.s
+Comment: FACTORIAL used once
+Factorial 00000000
+
+Symbol: Factorial
+   Definitions
+      At line 6 in file Factorial.s
+   Uses
+      None
+Comment: Factorial unused
+N 0000001C
+
+Symbol: N
+   Definitions
+      At line 28 in file Factorial.s
+   Uses
+      At line 14 in file Factorial.s
+Comment: N used once
+Stop 00000014
+
+Symbol: Stop
+   Definitions
+      At line 20 in file Factorial.s
+   Uses
+      At line 20 in file Factorial.s
+Comment: Stop used once
+loop 00000020
+
+Symbol: loop
+   Definitions
+      At line 36 in file Factorial.s
+   Uses
+      At line 47 in file Factorial.s
+Comment: loop used once
+5 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Absolute symbols
+
+INITIAL_MSP 00009000
+
+Symbol: INITIAL_MSP
+   Definitions
+      At line 30 in file Factorial.s
+   Uses
+      At line 10 in file Factorial.s
+Comment: INITIAL_MSP used once
+1 symbol
+340 symbols in table

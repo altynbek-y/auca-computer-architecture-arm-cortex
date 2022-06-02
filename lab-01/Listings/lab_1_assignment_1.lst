@@ -1,0 +1,70 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             convertF2CandC2F, CODE, READWRI
+TE
+    2 00000000                 ENTRY
+    3 00000000         
+    4 00000000 E3A00085        MOV              r0, #F      ; F = 85
+    5 00000004 E3A01005        MOV              r1, #0x5
+    6 00000008 E2400032        SUB              r0, r0, #0x32 ; F - 32
+    7 0000000C E0010190        MUL              r1, r0, r1  ; 5*(F - 32)
+    8 00000010         
+    9 00000010 E3A00009        MOV              r0, #0x9
+   10 00000014         ;SDIV r1, r1, r0  ; 5*(F-32)/9
+   11 00000014         
+   12 00000014                 ALIGN
+   13 00000014 EAFFFFFE 
+                       S       B                S
+   14 00000018         
+   15 00000018 00000085 
+                       F       EQU              0x85
+   16 00000018         
+   17 00000018                 END
+Command Line: --debug --xref --diag_suppress=9931 --bi --apcs=interwork --depen
+d=.\objects\lab_1_assignment_1.d -o.\objects\lab_1_assignment_1.o -IC:\Keil_v5\
+ARM\RV31\INC -IC:\Keil_v5\ARM\CMSIS\Include --predefine="__EVAL SETA 1" --prede
+fine="__UVISION_VERSION SETA 529" --list=.\listings\lab_1_assignment_1.lst lab_
+1_assignment_1.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+S 00000014
+
+Symbol: S
+   Definitions
+      At line 13 in file lab_1_assignment_1.s
+   Uses
+      At line 13 in file lab_1_assignment_1.s
+Comment: S used once
+convertF2CandC2F 00000000
+
+Symbol: convertF2CandC2F
+   Definitions
+      At line 1 in file lab_1_assignment_1.s
+   Uses
+      None
+Comment: convertF2CandC2F unused
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Absolute symbols
+
+F 00000085
+
+Symbol: F
+   Definitions
+      At line 15 in file lab_1_assignment_1.s
+   Uses
+      At line 4 in file lab_1_assignment_1.s
+Comment: F used once
+1 symbol
+335 symbols in table

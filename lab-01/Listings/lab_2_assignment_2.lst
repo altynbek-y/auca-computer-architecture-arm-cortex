@@ -1,0 +1,13 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+                       
+Command Line: --debug --xref --diag_suppress=9931 --bi --apcs=interwork --depen
+d=.\objects\lab_2_assignment_2.d -o.\objects\lab_2_assignment_2.o -IC:\Keil_v5\
+ARM\RV31\INC -IC:\Keil_v5\ARM\CMSIS\Include --predefine="__EVAL SETA 1" --prede
+fine="__UVISION_VERSION SETA 529" --list=.\listings\lab_2_assignment_2.lst lab_
+2_assignment_2.s
+332 symbols in table
